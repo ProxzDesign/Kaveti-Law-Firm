@@ -38,11 +38,13 @@ h1,h2,h3,h4,h5,h6,p,a,span,div{
 .container-main{
     width: min(1440px, calc(100% - 40px));
     margin-inline: auto;
+    position: relative;
 }
 
 .container-full{
     width: calc(100% - 40px);
     margin-inline: auto;
+    position: relative;
 }
 
 .header{
@@ -935,5 +937,98 @@ h1,h2,h3,h4,h5,h6,p,a,span,div{
             }
         }
         
+    }
+}
+
+
+/* ProcessSection Redesign */
+
+.processSection{
+    width: 100%;
+    height: 100svh;
+    position: relative;
+
+    .processWrapper{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 100px 0;
+        gap: 40px;
+
+        .sectionTitle{
+
+            .titleH2{
+                font-size: 46px;
+                font-weight: 300;
+                line-height: 1.2;
+                color: var(--primary-color);
+            }
+        }
+
+        .steps{
+            display: flex;
+            position: relative;
+
+            .stepsLine{
+                position: absolute;
+                width: 5px;
+                height: 3px;
+                left: 0;
+                top: 0;
+                background: var(--primary-color);
+            }
+
+            .stepCards{
+                display: flex;
+                gap: 104px;
+                height: 345px;
+
+                .stepCard{
+                    display: flex;
+                    flex-direction: column;
+                    width: 320px;
+                    gap: 24px;
+                    transform: translateX(0);
+                    transition: all 0.3s ease;
+
+                    .cardIcon{
+                        color: var(--primary-color);
+                        background: transparent;
+                        border: 1px solid var(--primary-color);
+                        border-radius: 9in;
+                        width: fit-content;
+                        padding: 6px;
+                        aspect-ratio: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.3s ease; 
+                    }
+                    .cardDetails{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 18px;
+
+                        .cardTitle{
+                            font-size: 24px;
+                            font-weight: 400;
+                            line-height: 1.2;
+                            color: var(--primary-color);
+                            transition: all 0.3s ease;                    
+                        }
+
+                        .cardText{
+                            font-size: 16px;
+                            font-weight: 300;
+                            line-height: 1.5;
+                            color: var(--fontColor);
+                            transition: all 0.3s ease;                    
+                        }
+                    }
+                }
+            }
+        }
     }
 }

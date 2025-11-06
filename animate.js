@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     movingIcon.style.left = `${iconPositions[iconStep] - 316}px`;
 
-    console.log("iconStep is" +iconStep);
-    console.log("iconPositions are" + Math.floor(iconPositions[iconStep] - 316));
+    // console.log("iconStep is" +iconStep);
+    // console.log("iconPositions are" + Math.floor(iconPositions[iconStep] - 316));
 
     // Fade in each card when its segment is reached
     cards.forEach((card, idx) => {
@@ -250,3 +250,97 @@ document.querySelector('.Testimonial-arrow.left').addEventListener('click', () =
 });
 
 updateTestimonialSlider();
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.processSection');
+  const stepsRow = document.querySelector('.stepCards');
+  const cards = gsap.utils.toArray('.stepCard');
+  const icons = gsap.utils.toArray('.cardIcon');
+  const stepsLine = document.querySelector('.stepsLine');
+  const baseScroll = stepsRow.scrollWidth - window.innerWidth;
+  const extraScroll = window.innerHeight; // 1 extra screen's worth
+  const pinDuration = baseScroll + extraScroll;
+  
+  function getScrollDistance() {
+    const containerWidth = document.querySelector('.steps').offsetWidth;
+    const lastCard = cards[cards.length-1];
+    const centerOfContainer = containerWidth / 2;
+    const lastCardCenter = lastCard.offsetLeft + lastCard.offsetWidth / 2;
+    return lastCardCenter - centerOfContainer;
+  }
+
+  function updateLine() {
+    const iconCenters = icons.map(icon => icon.offsetLeft + (icon.offsetWidth / 2));
+    const firstCenter = iconCenters[0];
+    const lastCenter = iconCenters[iconCenters.length - 1];
+    const totalDistance = lastCenter - firstCenter; // line width at end
+
+    // The total horizontal scroll distance for cards row
+    const scrollDist = stepsRow.scrollWidth - window.innerWidth;
+
+    // Align line vertically below icons & at first icon horizontally
+    stepsLine.style.left = firstCenter + 'px';
+    stepsLine.style.top = (icons[0].offsetTop + icons[0].offsetHeight/2 - stepsLine.offsetHeight/2) + "px";
+
+    // Remove previous triggers
+    ScrollTrigger.getAll().forEach(t => {
+      if (t.vars.id === 'stepsLineScroll') t.kill();
+    });
+
+    ScrollTrigger.create({
+      id: 'stepsLineScroll',
+      trigger: wrapper,
+      start: "top top",
+      end: "+=" + pinDuration,
+      scrub: true,
+      onUpdate: self => {
+        const progress = self.progress;
+        // Move leftwards in sync with cards scroll and grow width in sync (no jump)
+        stepsLine.style.transform = `translateX(${-getScrollDistance() * progress}px)`;
+        stepsLine.style.width = `${totalDistance * progress}px`;
+      },
+      invalidateOnRefresh: true
+    });
+
+  }
+
+  updateLine();
+  window.addEventListener('resize', () => {
+    gsap.set(stepsLine, {clearProps: "all"});
+    updateLine();
+  });
+
+  // Pin & animate cards scroll horizontally
+  gsap.to(stepsRow, {
+    x: () => -getScrollDistance(),
+    ease: "none",
+    scrollTrigger: {
+      trigger: wrapper,
+      pin: true,
+      scrub: 1,
+      start: "top top",
+      end: "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      markers: true,
+      id: 'hScroll',
+    }
+  });
+
+  // Optionally: Animate card highlight when centered
+  cards.forEach((card, i) => {
+    ScrollTrigger.create({
+      trigger: card,
+      containerAnimation: ScrollTrigger.getById('hScroll'),
+      start: "center center",
+      onEnter: () => card.classList.add('active'),
+      onLeaveBack: () => card.classList.remove('active'),
+    });
+  });
+});
