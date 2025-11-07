@@ -127,65 +127,7 @@ document.querySelector('.card-arrow.left').addEventListener('click', () => {
 
 updateSlider();
 
-///////////////////////////////
-// process card reveal Animation
-///////////////////////////////
 
-document.addEventListener('DOMContentLoaded', () => {
-  const processSection = document.querySelector('.process');
-  const processWrapper = document.querySelector('.processWrapper');
-  const processCards = document.querySelectorAll('.processCard');
-  const cardIcons = document.querySelectorAll('.cardIcon');
-  const movingIcon = document.querySelector('.cardProcess');
-  const cards = document.querySelectorAll('.card');
-
-  // Center positions of each cardIcon
-  function getIconCenters() {
-    return Array.from(cardIcons).map(icon =>
-      icon.offsetLeft + icon.offsetWidth / 2 - movingIcon.offsetWidth / 2
-    );
-  }
-
-  let iconPositions = [];
-  function updateIconPositions() {
-    iconPositions = getIconCenters();
-  }
-  updateIconPositions();
-  window.addEventListener('resize', updateIconPositions);
-
-  function animateOnScroll() {
-    const sectionRect = processSection.getBoundingClientRect();
-    const sectionHeight = processSection.offsetHeight;
-    const viewportHeight = window.innerHeight;
-    const cardsCount = processCards.length;
-
-    // Calculate scroll progress (0 top, 1 bottom)
-    let progress = Math.min(1, Math.max(0, -sectionRect.top / (sectionHeight - viewportHeight)));
-
-    // Divide into segments per card
-    const segment = 1 / cardsCount;
-    const currentCard = Math.floor(progress / segment);
-    // Animate blue icon horizontally
-    const iconStep = Math.min(cardsCount - 1, currentCard);
-    
-    movingIcon.style.left = `${iconPositions[iconStep] - 316}px`;
-
-    // console.log("iconStep is" +iconStep);
-    // console.log("iconPositions are" + Math.floor(iconPositions[iconStep] - 316));
-
-    // Fade in each card when its segment is reached
-    cards.forEach((card, idx) => {
-      if (idx <= iconStep) {
-        card.classList.add('fade-in');
-      } else {
-        card.classList.remove('fade-in');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', animateOnScroll);
-  animateOnScroll();
-});
 
 ///////////////////////////////
 // Testimonial card slider
@@ -320,3 +262,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+//Faq accordian
+
+document.addEventListener('DOMContentLoaded', () => {
+  const accordionItems = document.querySelectorAll('.accordion__item');
+
+  accordionItems.forEach((item, idx) => {
+    const header = item.querySelector('.accordion__header');
+    header.addEventListener('click', () => {
+      // Only one open at a time
+      if (!item.classList.contains('accordion__item--open')) {
+        accordionItems.forEach((other, i) => {
+          if (i !== idx && other.classList.contains('accordion__item--open')) {
+            other.classList.remove('accordion__item--open');
+          }
+        });
+        item.classList.add('accordion__item--open');
+      } else {
+        // Closing transition
+        item.classList.remove('accordion__item--open');
+        // Ensure at least one stays open (optional)
+        const anyOpen = Array.from(accordionItems).some(el => el.classList.contains('accordion__item--open'));
+        if (!anyOpen) item.classList.add('accordion__item--open');
+      }
+    });
+  });
+
+  const faqImg = document.querySelector('.faqContainer .cardImage');
+  const wrapper = document.querySelector('.faqWrapper');
+  
+  gsap.to(faqImg, {
+    backgroundPosition: '100% 50%',
+    ease: "none",
+    scrollTrigger: {
+      trigger: wrapper,
+      pin: false,
+      scrub: 1,
+      start: "top bottom",
+      end: "bottom top",
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      markers: true,
+      id: 'Scroll',
+    }
+  });
+});
+
