@@ -970,21 +970,34 @@ h1,h2,h3,h4,h5,h6,p,a,span,div{
         .steps{
             display: flex;
             position: relative;
-
-            .stepsLine{
-                position: absolute;
-                width: 5px;
-                height: 3px;
-                left: 0;
-                top: 0;
-                background: var(--primary-color);
-            }
-
+            
             .stepCards{
                 display: flex;
                 gap: 104px;
                 height: 345px;
+    
+                .stepsLine{
+                    position: absolute;
+                    width: 5px;
+                    height: 3px;
+                    left: 104px;
+                    top: 32px;
+                    /* z-index: 99; */
+                    background: var(--primary-color);
 
+                    .stickIcon{
+                        position: absolute;
+                        right: 0;
+                        top:0;
+                        transform: translateY(-50%);
+                        z-index: 99;
+                        background: var(--primary-color);
+                        height: 64px;
+                        width: 64px;
+                        border-radius: 9in;
+                    }
+                }
+                
                 .stepCard{
                     display: flex;
                     flex-direction: column;
@@ -995,7 +1008,7 @@ h1,h2,h3,h4,h5,h6,p,a,span,div{
 
                     .cardIcon{
                         color: var(--primary-color);
-                        background: transparent;
+                        background: #FFF;
                         border: 1px solid var(--primary-color);
                         border-radius: 9in;
                         width: fit-content;
