@@ -303,9 +303,18 @@ document.addEventListener('DOMContentLoaded', () => {
       end: "bottom top",
       anticipatePin: 1,
       invalidateOnRefresh: true,
-      markers: true,
+      markers: false,
       id: 'Scroll',
     }
   });
 });
 
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});
