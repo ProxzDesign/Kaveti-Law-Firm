@@ -226,7 +226,7 @@ a{
 .header.sticky {
     transform: translateY(0);
     transition: transform 0.3s;
-    background: #000b2499;
+    background: var(--primary-color);
     backdrop-filter: blur(100px);
 
     &::after {
@@ -402,7 +402,7 @@ a{
     background: url('assets/imgs/advantage-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 100px 0;
+    padding: 50px 0;
 
     .advatageWrapper {
         display: flex;
@@ -680,7 +680,7 @@ a{
 }
 
 .services {
-    padding-block: 100px;
+    padding-block: 50px;
     background: url('assets/imgs/service-bg.png');
 
     .servicesWrapper {
@@ -818,7 +818,7 @@ a{
 
 .Testimonials {
     position: relative;
-    padding: 100px 0;
+    padding: 50px 0;
 
     .TestimonialWrapper {
         display: flex;
@@ -1246,7 +1246,7 @@ a{
 }
 
 .cta{
-    margin-block: 100px;
+    margin-block: 50px;
     .ctaWrapper{
         padding: 100px;
         background: var(--primary-color);
