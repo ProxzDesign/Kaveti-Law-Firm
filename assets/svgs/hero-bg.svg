@@ -1,17 +1,17 @@
 <svg width="1172" height="698" viewBox="0 0 1172 698" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
     .circle{
-        animation: scaleup 6s linear infinite;
+        animation: scaleup 1s linear infinite;
     }
 
     @keyframes scaleup {
         0%{
-            scale:0;
-            opacity: 1;
+            scale:0.6;
+            opacity: 0.5;
         }
         50%{
             scale:1;
-            opacity: 1;
+            opacity: 0.5;
         }
         100%{
             scale:1.5;
@@ -20,7 +20,7 @@
         
     }
 </style>
-<g opacity="0.77">
+<g opacity="0.5">
 <path d="M355.508 588.569C357.366 590.416 360.287 587.496 358.428 585.649C356.57 583.801 353.65 586.721 355.508 588.569Z" fill="#8EA9E9"/>
 <path d="M75.1788 74.6315C77.0265 76.4792 79.9572 73.5591 78.0989 71.7114C76.2513 69.8638 73.3206 72.7839 75.1788 74.6315Z" fill="#8EA9E9"/>
 <path d="M1056.33 541.847C1058.19 543.695 1061.11 540.775 1059.25 538.927C1057.39 537.08 1054.47 540 1056.33 541.847Z" fill="#8EA9E9"/>
@@ -2718,15 +2718,15 @@
 <path d="M1018.6 175.486C1017.34 179.086 1024.29 178.045 1022.14 174.648C1021.56 173.724 1019.16 173.894 1018.6 175.486Z" fill="#8EA9E9"/>
 <path d="M365.013 622.761C363.261 623.865 365.586 627.666 367.54 626.35C369.101 625.298 367.667 621.083 365.013 622.761Z" fill="#8EA9E9"/>
 </g>
-<g opacity="0.8">
-<circle class="circle" style="animation-delay:1s; scale:0;transform-origin:852px 340px;" cx="852" cy="340" r="12" fill="white" fill-opacity="0.39">
+<g opacity="1">
+<circle class="circle" style="animation-delay:1s; scale:0;transform-origin:852px 340px;" cx="852" cy="340" r="12" fill="white" fill-opacity="1">
   </circle>
-<circle cx="852" cy="340" r="7" fill="white"/>
-<circle class="circle" style="animation-delay:2s; scale:0;transform-origin:268px 152px;" cx="268" cy="152" r="12" fill="white" fill-opacity="0.39"/>
-<circle cx="268" cy="152" r="7" fill="white"/>
-<circle class="circle" style="animation-delay:3s; scale:0;transform-origin:461px 101px;" cx="461" cy="101" r="12" fill="white" fill-opacity="0.39"/>
-<circle cx="461" cy="101" r="7" fill="white"/>
-<circle class="circle" style="transform-origin:1060px 495px;" cx="1060" cy="495" r="12" fill="white" fill-opacity="0.39"/>
-<circle cx="1060" cy="495" r="7" fill="white"/>
+<circle cx="852" cy="340" r="7" fill="white" fill-opacity="0.6"/>
+<circle class="circle" style="animation-delay:2s; scale:0;transform-origin:268px 152px;" cx="268" cy="152" r="12" fill="white" fill-opacity="1"/>
+<circle cx="268" cy="152" r="7" fill="white" fill-opacity="0.6"/>
+<circle class="circle" style="animation-delay:3s; scale:0;transform-origin:461px 101px;" cx="461" cy="101" r="12" fill="white" fill-opacity="1"/>
+<circle cx="461" cy="101" r="7" fill="white" fill-opacity="0.6"/>
+<circle class="circle" style="transform-origin:1060px 495px;" cx="1060" cy="495" r="12" fill="white" fill-opacity="1"/>
+<circle cx="1060" cy="495" r="7" fill="white" fill-opacity="0.6"/>
 </g>
 </svg>

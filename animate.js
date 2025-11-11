@@ -318,3 +318,99 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
   });
 });
+
+
+// Mobile menu 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.hamburger');
+  const nav = document.getElementById('mobileNav');
+  const backdrop = nav.querySelector('.mobile-nav__backdrop');
+
+  function closeMenu() {
+    burger.classList.remove('is-active');
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+
+  burger.addEventListener('click', e => {
+    const isOpen = nav.classList.toggle('open');
+    burger.classList.toggle('is-active', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close menu when clicking backdrop or any nav link
+  backdrop.addEventListener('click', closeMenu);
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', closeMenu)
+  );
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mainText = "Get a Legal Advice from a Trusted Lawyer with education and skill in ";
+  const mainSelector = ".typewriter-main";
+  const countries = [
+    "America", "Australia", "United Kingdom", "India"
+  ];
+  const countrySelector = "#typeCountries";
+  const typeSpeed = 0.06;
+  const eraseSpeed = 0.045;
+  const delayAfterType = 1;
+  const mainDelay = 0.6;
+  const cursorClass = "typewriter-cursor";
+
+  function typeText(el, txt, cb, opts = {}) {
+    el.classList.add(cursorClass);
+    el.textContent = "";
+    txt.split("").forEach((char, idx) => {
+      gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
+        el.textContent += char;
+        if (idx === txt.length - 1) {
+          // Remove cursor after main text animation completes
+          el.classList.remove(cursorClass);
+          if (cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
+        }
+      });
+    });
+  }
+
+  function typeCountry(el, txt, cb, opts = {}) {
+    el.classList.add(cursorClass);
+    el.textContent = "";
+    txt.split("").forEach((char, idx) => {
+      gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
+        el.textContent += char;
+        if (idx === txt.length - 1 && cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
+      });
+    });
+  }
+  function eraseText(el, cb, speed = eraseSpeed) {
+    const txt = el.textContent;
+    txt.split("").forEach((char, idx) => {
+      gsap.delayedCall(idx * speed, () => {
+        el.textContent = txt.slice(0, txt.length - idx - 1);
+        if (idx === txt.length - 1 && cb) cb();
+      });
+    });
+  }
+
+  function animateCountriesLoop(list, idx = 0) {
+    const countryEl = document.querySelector(countrySelector);
+    typeCountry(countryEl, list[idx], () => {
+      eraseText(countryEl, () => {
+        animateCountriesLoop(list, (idx + 1) % list.length);
+      });
+    }, { speed: 0.2 });
+  }
+
+  document.querySelector(mainSelector).textContent = "";
+  document.querySelector(countrySelector).textContent = "";
+
+  // Main typewriter, then start country loop (which uses its own cursor)
+  typeText(
+    document.querySelector(mainSelector),
+    mainText,
+    () => animateCountriesLoop(countries),
+    { delay: mainDelay, speed: typeSpeed, endDelay: 0.6 }
+  );
+});

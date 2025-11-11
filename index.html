@@ -46,6 +46,39 @@
                         <a href="#">Specialty</a>
                     </div>
                 </div>
+                <button class="hamburger" aria-label="Open navigation" aria-controls="mobileNav" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav id="mobileNav" class="mobile-nav">
+                    <div class="mobile-nav__backdrop"></div>
+                    <div class="mobile-nav__panel">
+                        <div class="mobile-nav__branding">
+                        <img src="assets/svgs/Logo-white.svg" alt="Kaveti Law Firm" />
+                        </div>
+                        <div class="mobile-nav__links">
+                        <a href="#">Family & Personal</a>
+                        <a href="#">Work & Corporate</a>
+                        <a href="#">Civil & Criminal</a>
+                        <a href="#">Immigration & International</a>
+                        <a href="#">Property & Contracts</a>
+                        <a href="#">Specialty</a>
+                        </div>
+                        <div class="mobile-nav__submenu">
+                        <a href="#">About Us</a>
+                        <a href="#">Our Team</a>
+                        <a href="#">Locations</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Career</a>
+                        </div>
+                        <div class="mobile-nav__cta">
+                        <a href="#">Brochure</a>
+                        <a href="#" class="booknow-btn">Book Now</a>
+                        <a href="#"><img src="assets/svgs/phone.svg" alt="Phone"> (212) 532-1166</a>
+                        <a href="#"><img src="assets/svgs/search.svg" alt="search"></a>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </section>
         <section class="hero" id="hero">
@@ -55,8 +88,10 @@
                         <img src="assets/svgs/hero-bg.svg" alt="global Location">
                     </div>
                     <div class="heroContent">
-                        <h1 class="titleH1">Get a Legal Advice from a  Trusted Lawyer with education and skill in
-                            <span>America, Australia, United Kingdom & India</span></h1>
+                        <h1 class="titleH1">
+                            <span class="typewriter-main"></span>
+                           <span id="typeCountries"></span>
+                        </h1>
                         <p class="descriptionText">
                             Kaveti Law is a <span>global law firm based in New York City</span>, specializing in
                             international business, investment, and immigration law. We deliver innovative,
@@ -219,7 +254,7 @@
                     <div class="steps">
                         <ul class="stepCards">
                             <div class="stepsLine">
-                                <img class="stickIcon" src="assets/svgs/procces-icon05.svg">
+                                <img class="stickIcon" src="assets/svgs/procces-icon06.svg">
                             </div>
                             <li class="stepCard firstStep">
                                 <div class="cardIcon">
@@ -235,8 +270,8 @@
                                      <img src="assets/svgs/procces-icon02.svg" alt="Process Step 2">
                                 </div>
                                 <div class="cardDetails">
-                                    <h3 class="cardTitle">Consultation & Case <br>Evaluation</h3>
-                                    <p class="cardText">We begin with an initial consultation through phone, email, or our website. Our team listens carefully to understand your legal needs and goals. We outline possible strategies, timelines, and fees to help you make an informed decision.</p>
+                                    <h3 class="cardTitle">Engagement & <br>Onboarding</h3>
+                                    <p class="cardText">After you decide to proceed, we formalize the engagement with a clear agreement. A dedicated legal professional is assigned to your case for smooth coordination. We collect the required documents and establish secure communication for updates.</p>
                                 </div>
                             </li>
                             <li class="stepCard thirdStep">
@@ -244,8 +279,8 @@
                                      <img src="assets/svgs/procces-icon03.svg" alt="Process Step 3">
                                 </div>
                                 <div class="cardDetails">
-                                    <h3 class="cardTitle">Consultation & Case <br>Evaluation</h3>
-                                    <p class="cardText">We begin with an initial consultation through phone, email, or our website. Our team listens carefully to understand your legal needs and goals. We outline possible strategies, timelines, and fees to help you make an informed decision.</p>
+                                    <h3 class="cardTitle">Research & Strategy<br>Development </h3>
+                                    <p class="cardText">Our attorneys thoroughly review your documents and applicable laws. We prepare a custom legal strategy designed for efficiency and clarity. A clear roadmap is shared so you remain informed at every stage.</p>
                                 </div>
                             </li>
                             <li class="stepCard fourthStep">
@@ -253,8 +288,8 @@
                                      <img src="assets/svgs/procces-icon04.svg" alt="Process Step 4">
                                 </div>
                                 <div class="cardDetails">
-                                    <h3 class="cardTitle">Consultation & Case <br>Evaluation</h3>
-                                    <p class="cardText">We begin with an initial consultation through phone, email, or our website. Our team listens carefully to understand your legal needs and goals. We outline possible strategies, timelines, and fees to help you make an informed decision.</p>
+                                    <h3 class="cardTitle">Action & <br>Representation</h3>
+                                    <p class="cardText">Once the strategy is finalized, we begin preparing documents, filings, and legal submissions. Our team represents you before authorities and keeps you updated throughout. Every action is handled professionally and in your best interest.</p>
                                 </div>
                             </li>
                             <li class="stepCard fifthStep">
@@ -262,11 +297,12 @@
                                      <img src="assets/svgs/procces-icon05.svg" alt="Process Step 5">
                                 </div>
                                 <div class="cardDetails">
-                                    <h3 class="cardTitle">Consultation & Case <br>Evaluation</h3>
-                                    <p class="cardText">We begin with an initial consultation through phone, email, or our website. Our team listens carefully to understand your legal needs and goals. We outline possible strategies, timelines, and fees to help you make an informed decision.</p>
+                                    <h3 class="cardTitle">Resolution & <br>Ongoing Support</h3>
+                                    <p class="cardText">After successful completion, we provide final documents and a closing summary. We remain available for any follow-up consultations or compliance needs. Our support continues beyond the case to maintain lasting client relationships.</p>
                                 </div>
                             </li>
                         </ul>
+                        <h1>This Is Image</p>
                     </div>
                 </div>
             </div>
@@ -454,108 +490,122 @@
                     <div class="faqContainer">
                         <div class="cardImage" data-url="assets/imgs/faq Image.png"></div>
                         <div class="accordion">
-                            <div class="accordion__item accordion__item--open">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        What types of legal services do you offer internationally?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">We provide a full suite of global legal services including business formation, contract drafting, dispute resolution, and intellectual property protection.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item accordion__item--open">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            What types of legal services do you offer internationally?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">We provide a full suite of global legal services including business formation, contract drafting, dispute resolution, and intellectual property protection.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        Do you handle both personal and business cases?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">Yes, our firm assists clients with both personal matters—such as family law, immigration, and estate planning—and business cases, including corporate law, contracts, and regulatory compliance.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            Do you handle both personal and business cases?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">Yes, our firm assists clients with both personal matters—such as family law, immigration, and estate planning—and business cases, including corporate law, contracts, and regulatory compliance.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        How do you manage cases across different countries?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">We collaborate with a network of trusted international partners and local experts to ensure your case is managed seamlessly across jurisdictions. Our approach includes direct communication, careful research, and tailored legal strategies for every region involved.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            How do you manage cases across different countries?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">We collaborate with a network of trusted international partners and local experts to ensure your case is managed seamlessly across jurisdictions. Our approach includes direct communication, careful research, and tailored legal strategies for every region involved.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        Can I consult your team online or remotely?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">Absolutely. We offer consultations via video call, phone, and email to make it easy for you to contact us from anywhere. All case updates and meetings can be handled remotely for your convenience.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            Can I consult your team online or remotely?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">Absolutely. We offer consultations via video call, phone, and email to make it easy for you to contact us from anywhere. All case updates and meetings can be handled remotely for your convenience.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        What are your consultation fees?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">Our initial consultation fees are competitive and clearly communicated upfront. The exact fee depends on the type and complexity of your case. Please contact us for a personalized quote or to discuss your needs.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            What are your consultation fees?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">Our initial consultation fees are competitive and clearly communicated upfront. The exact fee depends on the type and complexity of your case. Please contact us for a personalized quote or to discuss your needs.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        How long does it take to resolve an international case?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">The timeline varies depending on the legal matter, countries involved, and documentation required. After an initial review, we’ll provide you with an estimated timeframe and keep you updated throughout each stage of the process.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            How long does it take to resolve an international case?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">The timeline varies depending on the legal matter, countries involved, and documentation required. After an initial review, we’ll provide you with an estimated timeframe and keep you updated throughout each stage of the process.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__item">
-                                <div class="accordion__header">
-                                    <h3 class="accordion__title">
-                                        Do you assist with immigration or visa issues?
-                                    </h3>
-                                    <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
-                                    </svg>
-                                </div>
-                                <div class="accordion__content">
-                                    <div class="accordion__content-inner">
-                                        <p class="accordion__text">Yes, we provide guidance and legal support for immigration matters—including visa applications, work permits, residency requests, and cross-border compliance. Our team can advise you on the best options for your specific situation.</p>
+                            <div class="accordian-border">
+                                <div class="accordion__item">
+                                    <div class="accordion__header">
+                                        <h3 class="accordion__title">
+                                            Do you assist with immigration or visa issues?
+                                        </h3>
+                                        <svg class="accordion__toggle" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion__content">
+                                        <div class="accordion__content-inner">
+                                            <p class="accordion__text">Yes, we provide guidance and legal support for immigration matters—including visa applications, work permits, residency requests, and cross-border compliance. Our team can advise you on the best options for your specific situation.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
