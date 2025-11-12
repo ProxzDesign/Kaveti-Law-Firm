@@ -3,6 +3,127 @@ gsap.registerPlugin(ScrollTrigger);
 // Header Scroll Behavior Script
 ///////////////////////////////
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Hero section selectors based on your HTML
+  const heroBg = document.querySelector(".heroBackground");
+  const header = document.querySelector(".header");
+  const typewriterMain = document.querySelector(".titleH1");
+  const rightHeroImg = document.querySelector(".heroimg");
+  const subtext = document.querySelector(".descriptionText");
+  const statButton = document.querySelector(".satisfiedCustomer"); // Adjust if you want the full div
+
+  // Initial states for animation
+  gsap.set(heroBg, { opacity: 0 });
+  gsap.set(header, { y: -60, opacity: 0 });
+  gsap.set(typewriterMain, { opacity: 0 });
+  gsap.set(rightHeroImg, { y: 80, opacity: 0 });
+  gsap.set(subtext, { opacity: 0 });
+  gsap.set(statButton, { opacity: 0 });
+
+  // GSAP Timeline
+  const tl = gsap.timeline();
+
+  tl.to(heroBg, { opacity: 1, duration: 1 })
+    .to(header, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4") // slide in header from top
+    .to(typewriterMain, { opacity: 1, duration: 0.5 }, "-=0.2") // fade in typewriter text
+    .add(() => {
+        
+      
+    }, "+=0")
+    .to(rightHeroImg, { y: 0, opacity: 1, duration: 0.8 }, "-=0.2") // reveal right image up
+    .to(subtext, { opacity: 0.8, duration: 0.6 }, "-=0.4") // fade in subtext
+    .to(statButton, { opacity: 1, duration: 0.6 }, "-=0.3") // fade in statistic button
+
+  // The typewriter animation automatically starts via your logic
+},100);
+
+function revealSection(sectionSelector, firstElem, restSelector = null) {
+  const section = document.querySelector(sectionSelector);
+  if (!section) return;
+  const first = section.querySelector(firstElem);
+  const rest = restSelector ? section.querySelectorAll(restSelector) : [];
+
+  gsap.set([first, ...rest], { opacity: 0, y: 40 });
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%", // section top hits 70% of viewport
+      toggleActions: "play none none none",
+      once: true, // Only reveal once
+    }
+  })
+  .to(first, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" })
+  .to(rest, {
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    stagger: 0.2,
+    ease: "power2.out"
+  }, "-=0.3")
+  .fromTo('.advantagesCards',{
+    x:600,
+    opacity:0
+  },
+  {x:0,
+    opacity:1
+  });
+}
+
+// Example usage for key sections:
+
+// Record Counters Section (Statistic cards)
+revealSection(
+  ".recordCounters", // Section parent
+  ".sectionTitle", // Section title
+  ".achievement" // All achievement/stat cards inside
+);
+
+// Advantages Cards Section
+revealSection(
+  ".advantages",
+  ".sectionTitle",
+  // ".advantagesCards" // All .card inside advantages
+);
+
+// Process Steps Section
+revealSection(
+  ".processSection",
+  ".sectionTitle",
+  ".stepCard" // All step cards inside process section
+);
+
+// Services Cards Section
+revealSection(
+  ".services",
+  ".sectionTitle",
+  ".serviceCard"
+);
+
+// Testimonials Section
+revealSection(
+  ".Testimonials",
+  ".sectionTitle",
+  ".Testimonial" // All testimonials
+);
+
+// FAQs Section
+revealSection(
+  ".faqs",
+  ".sectionTitle",
+  ".accordionitem"
+);
+
+// Contact CTA Section
+revealSection(
+  ".cta", // Section
+  ".titleH2", // Main CTA Headline
+  ".ctaBtn" // The main button
+);
+
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
@@ -346,71 +467,83 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 });
 
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  const mainText = "Get a Legal Advice from a Trusted Lawyer with education and skill in ";
-  const mainSelector = ".typewriter-main";
-  const countries = [
-    "America", "Australia", "United Kingdom", "India"
-  ];
-  const countrySelector = "#typeCountries";
-  const typeSpeed = 0.06;
-  const eraseSpeed = 0.045;
-  const delayAfterType = 1;
-  const mainDelay = 0.6;
-  const cursorClass = "typewriter-cursor";
+          const mainText = "Get a Legal Advice from a Trusted Lawyer with education and skill in ";
+          const mainSelector = ".typewriter-main";
+          const countries = [
+            "America", "Australia", "United Kingdom", "India"
+          ];
+          const countrySelector = "#typeCountries";
+          const typeSpeed = 0.06;
+          const eraseSpeed = 0.045;
+          const delayAfterType = 1;
+          const mainDelay = 0.6;
+          const cursorClass = "typewriter-cursor";
 
-  function typeText(el, txt, cb, opts = {}) {
-    el.classList.add(cursorClass);
-    el.textContent = "";
-    txt.split("").forEach((char, idx) => {
-      gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
-        el.textContent += char;
-        if (idx === txt.length - 1) {
-          // Remove cursor after main text animation completes
-          el.classList.remove(cursorClass);
-          if (cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
-        }
-      });
-    });
-  }
+          function typeText(el, txt, cb, opts = {}) {
+            el.classList.add(cursorClass);
+            el.textContent = "";
+            txt.split("").forEach((char, idx) => {
+              gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
+                el.textContent += char;
+                if (idx === txt.length - 1) {
+                  // Remove cursor after main text animation completes
+                  el.classList.remove(cursorClass);
+                  if (cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
+                }
+              });
+            });
+          }
 
-  function typeCountry(el, txt, cb, opts = {}) {
-    el.classList.add(cursorClass);
-    el.textContent = "";
-    txt.split("").forEach((char, idx) => {
-      gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
-        el.textContent += char;
-        if (idx === txt.length - 1 && cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
-      });
-    });
-  }
-  function eraseText(el, cb, speed = eraseSpeed) {
-    const txt = el.textContent;
-    txt.split("").forEach((char, idx) => {
-      gsap.delayedCall(idx * speed, () => {
-        el.textContent = txt.slice(0, txt.length - idx - 1);
-        if (idx === txt.length - 1 && cb) cb();
-      });
-    });
-  }
+          function typeCountry(el, txt, cb, opts = {}) {
+            el.classList.add(cursorClass);
+            el.textContent = "";
+            txt.split("").forEach((char, idx) => {
+              gsap.delayedCall((opts.delay || 0) + idx * (opts.speed || typeSpeed), () => {
+                el.textContent += char;
+                if (idx === txt.length - 1 && cb) gsap.delayedCall(opts.endDelay || delayAfterType, cb);
+              });
+            });
+          }
+          function eraseText(el, cb, speed = eraseSpeed) {
+            const txt = el.textContent;
+            txt.split("").forEach((char, idx) => {
+              gsap.delayedCall(idx * speed, () => {
+                el.textContent = txt.slice(0, txt.length - idx - 1);
+                if (idx === txt.length - 1 && cb) cb();
+              });
+            });
+          }
 
-  function animateCountriesLoop(list, idx = 0) {
-    const countryEl = document.querySelector(countrySelector);
-    typeCountry(countryEl, list[idx], () => {
-      eraseText(countryEl, () => {
-        animateCountriesLoop(list, (idx + 1) % list.length);
-      });
-    }, { speed: 0.2 });
-  }
+          function animateCountriesLoop(list, idx = 0) {
+            const countryEl = document.querySelector(countrySelector);
+            typeCountry(countryEl, list[idx], () => {
+              eraseText(countryEl, () => {
+                animateCountriesLoop(list, (idx + 1) % list.length);
+              });
+            }, { speed: 0.2 });
+          }
 
-  document.querySelector(mainSelector).textContent = "";
-  document.querySelector(countrySelector).textContent = "";
+          document.querySelector(mainSelector).textContent = "";
+          document.querySelector(countrySelector).textContent = "";
 
-  // Main typewriter, then start country loop (which uses its own cursor)
-  typeText(
-    document.querySelector(mainSelector),
-    mainText,
-    () => animateCountriesLoop(countries),
-    { delay: mainDelay, speed: typeSpeed, endDelay: 0.6 }
-  );
-});
+          // Main typewriter, then start country loop (which uses its own cursor)
+          typeText(
+            document.querySelector(mainSelector),
+            mainText,
+            () => animateCountriesLoop(countries),
+            { delay: mainDelay, speed: typeSpeed, endDelay: 0.6 }
+          );
+        });
+
+
+
+
+
+
+
+
