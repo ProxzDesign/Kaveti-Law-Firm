@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     stepsLine,
     { width: 0 },
     {
-      width: 'calc(100% - 735px)',
+      width: 'calc(100% - 810px)',
       ease: 'none',
       scrollTrigger: {
         trigger: wrapper,
@@ -370,7 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
         markers: false,
       }
     }
-  );
+  )
+
+
     
 
   // Optionally: Animate card highlight when centered
