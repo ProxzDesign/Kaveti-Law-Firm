@@ -882,7 +882,7 @@ a{
                     gap: 20px;
 
                     .Testimonial {
-                        background: #F8F8F8;
+                        background: var(--primaryAccent);
                         border: 1px solid #EFF0F6;
                         padding: 40px;
                         height: 100%;
@@ -1081,6 +1081,13 @@ a{
                     }
                 }
 
+                li{
+                    list-style: none;
+                img{
+                    width: auto;
+                    height: 100%;
+                }}
+
                 .stepCard {
                     display: flex;
                     flex-direction: column;
@@ -1262,7 +1269,7 @@ a{
                         .accordion__content-inner {
                             min-height: 0;
                             padding: 0 1rem 1rem 1rem;
-                            color: #31415b;
+                            color: var(--gradient-start);
                             line-height: 1.6;
                             opacity: 0;
                             transform: translateY(16px);

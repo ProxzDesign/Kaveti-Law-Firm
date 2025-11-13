@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const tl = gsap.timeline();
 
   tl.to(heroBg, { opacity: 1, duration: 1 })
-    .to(header, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4") // slide in header from top
     .to(typewriterMain, { opacity: 1, duration: 0.5 }, "-=0.2") // fade in typewriter text
+    .to(rightHeroImg, { y: 0, opacity: 1, duration: 0.8 }, "-=0.2") // reveal right image up
+    .to(header, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4") // slide in header from top
     .add(() => {
         
       
     }, "+=0")
-    .to(rightHeroImg, { y: 0, opacity: 1, duration: 0.8 }, "-=0.2") // reveal right image up
     .to(subtext, { opacity: 0.8, duration: 0.6 }, "-=0.4") // fade in subtext
     .to(statButton, { opacity: 1, duration: 0.6 }, "-=0.3") // fade in statistic button
 
@@ -323,6 +323,7 @@ updateTestimonialSlider();
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.processSection');
   const stepsRow = document.querySelector('.stepCards');
+  const stepImage = document.querySelector('.sixthStep');
   const cards = gsap.utils.toArray('.stepCard');
   const baseScroll = stepsRow.scrollWidth - window.innerWidth;
   const extraScroll = window.innerHeight; // 1 extra screen's worth
@@ -358,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     stepsLine,
     { width: 0 },
     {
-      width: 'calc(100% - 360px)',
+      width: 'calc(100% - 735px)',
       ease: 'none',
       scrollTrigger: {
         trigger: wrapper,
