@@ -198,7 +198,8 @@ document.querySelectorAll('.cardImage').forEach(el => {
 const cardTrack = document.querySelector('.card-track');
 const cards = Array.from(cardTrack.children);
 const cardCount = cards.length;
-const cardWidth = 420 + 20; // width + margin-right
+// console.log("card width is =" + document.querySelector('.card').offsetWidth) // fetching the card width
+const cardWidth = document.querySelector('.card').offsetWidth + 20; // width + margin-right
 let position = 0;
 
 // Clone cards for seamless infinite effect
@@ -264,7 +265,8 @@ document.querySelectorAll('.TestimonialImage').forEach(el => {
 const TestimonialTrack = document.querySelector('.Testimonialtrack');
 const Testimonial = Array.from(TestimonialTrack.children);
 const TestimonialCount = Testimonial.length;
-const Testimonialidth = 520 + 20; // width + margin-right
+console.log("card width is =" + document.querySelector('.Testimonialgroup').offsetWidth) // fetching the card width
+const Testimonialidth = document.querySelector('.Testimonialgroup').offsetWidth + 20; // width + margin-right
 let positionTestimonial = 0;
 
 // Clone cards for seamless infinite effect
@@ -338,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Pin & animate cards scroll horizontally
   gsap.to(stepsRow, {
-    x: () => -getScrollDistance(),
+    x: () => getScrollDistance(),
     ease: "none",
     scrollTrigger: {
       trigger: wrapper,
@@ -373,9 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 
 
-    
-
-  // Optionally: Animate card highlight when centered
   cards.forEach((card, i) => {
     ScrollTrigger.create({
       trigger: card,
