@@ -447,8 +447,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// Mobile menu 
 
+//Menu DropDown 
+document.querySelectorAll('.nav-item').forEach(item => {
+  const toggle = item.querySelector('.dropdownLink');
+  if (toggle) {
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.nav-item').forEach(i => {
+        if (i !== item) i.classList.remove('open');
+      });
+      item.classList.toggle('open');
+    });
+  }
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-item').forEach(item => 
+    item.classList.remove('open')
+  );
+});
+
+
+// Mobile Menu 
 document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.hamburger');
   const nav = document.getElementById('mobileNav');
