@@ -36,7 +36,7 @@ const tabList = document.querySelectorAll('#tabList li');
 const tabPanes = document.querySelectorAll('.tab-pane');
 const serviceTabs = document.querySelector('.services-tabs');
 const serviceContent = document.querySelector('.services-content');
-const contentArea = document.querySelector('.serviceContent');
+const contentArea = document.querySelectorAll('.serviceContent');
 
 tabList.forEach(tab => {
   tab.addEventListener('click', () => {
@@ -52,12 +52,73 @@ tabList.forEach(tab => {
     document.getElementById(targetId).classList.add('active');
   });
 });
+
+//adding margin top and height according to Tabs height
+
 document.addEventListener("DOMContentLoaded", () => {
   if (serviceTabs && serviceContent) {
-    const height = serviceTabs.offsetHeight;
-    if (height > 0) {
-      serviceContent.style.marginTop = `${height * -1}px`;
-      contentArea.style.height = `${height}px`;
+    // Only apply on screens >= 900px
+    if (window.innerWidth >= 900) {
+      const height = serviceTabs.offsetHeight;
+      if (height > 0) {
+        serviceContent.style.marginTop = `${height * -1}px`;
+        contentArea.forEach(area => {
+          area.style.height = `${height}px`;
+        });
+      }
+    } else {
+      // Optional: Reset on mobile screens
+      serviceContent.style.marginTop = '';
+      contentArea.forEach(area => {
+        area.style.height = '';
+      });
     }
   }
+});
+
+
+//Menu DropDown 
+document.querySelectorAll('.nav-item').forEach(item => {
+  const toggle = item.querySelector('.dropdownLink');
+  if (toggle) {
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.nav-item').forEach(i => {
+        if (i !== item) i.classList.remove('open');
+      });
+      item.classList.toggle('open');
+    });
+  }
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-item').forEach(item => 
+    item.classList.remove('open')
+  );
+});
+
+
+// Mobile Menu 
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.hamburger');
+  const nav = document.getElementById('mobileNav');
+  const backdrop = nav.querySelector('.mobile-nav__backdrop');
+
+  function closeMenu() {
+    burger.classList.remove('is-active');
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+
+  burger.addEventListener('click', e => {
+    const isOpen = nav.classList.toggle('open');
+    burger.classList.toggle('is-active', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close menu when clicking backdrop or any nav link
+  backdrop.addEventListener('click', closeMenu);
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', closeMenu)
+  );
 });

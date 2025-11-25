@@ -28,7 +28,7 @@
                 background: linear-gradient(90deg, #FFFFFF, #6B97FF);
                 background-clip: text;
                 color: transparent;
-                opacity: 0;
+                opacity: 1;
 
 
             }
@@ -38,7 +38,7 @@
                 line-height: 1.6;
                 font-weight: 300;
                 color: #C0E6FF;
-                opacity: 0;
+                opacity: 1;
 
                 span {
                     color: var(--whiteText);
