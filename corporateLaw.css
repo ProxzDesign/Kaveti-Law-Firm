@@ -94,8 +94,10 @@
                 padding: 12px 0;
                 color: #3250a8;
                 cursor: pointer;
-                transition: color 0.18s, font-weight 0.18s;
+                transition: all 0.18s;
                 opacity: 0.5;
+                font-weight: 400;
+
 
                 &.active {
                     font-weight: 700;
@@ -119,8 +121,8 @@
                 margin-left: auto;
                 .service-info p {
                     margin-bottom: 18px;
-                    font-size: 1.06rem;
-                    color: #384867;
+                    font-size: 1rem;
+                    color: var(--fontColor);
                 }
                 .sector-expertise {
                     h4 {
@@ -149,15 +151,26 @@
                     align-items: flex-start;
 
                     .card-icon {
+                        display: flex;
+                        align-items: center;
                         font-size: 32px;
                         margin-bottom: 12px;
+                        gap: 20px;
+
+                        img{
+                            padding: 10px;
+                            border: 1px solid #C7C7C7;
+                            border-radius: 10px;
+                        }
+                        
+                        h5 {
+                            margin: 0 0 8px 0;
+                            color: var(--fontColor);
+                            font-size: 24px;
+                            font-weight: 400;
+                        }
                     }
-                    h5 {
-                        margin: 0 0 8px 0;
-                        color: #3250a8;
-                        font-size: 1.02rem;
-                        font-weight: 600;
-                    }
+                    
                     p {
                         color: #5e6781;
                         font-size: 1rem;
