@@ -72,6 +72,7 @@
 }
 
 .teamSection {
+    padding-bottom: 50px;
     .teamWrapper{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -96,6 +97,50 @@
 
                     &.neonText{
                         color: #00ACFB;
+                    }
+                }
+            }
+            .divider{
+                width: 100%;
+                height: 1px;
+                background: #DDDDDD;
+            }
+            .educationDetails, .experience{
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                ul{
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                    padding: 0;
+                    gap: 16px;
+
+                    li{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+
+                        &.description, .description{
+                                color: #2E2E2E;
+                                font-size: 16px;
+                            }
+                        .blueText{
+                            color: #21459C;
+                            font-weight: 600;
+                        }
+                        .neonText{
+                            color: #00ACFB;
+                        }
+
+                        .list{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            margin-top: 10px;
+                        }
                     }
                 }
             }
