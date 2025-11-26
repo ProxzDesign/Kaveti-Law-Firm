@@ -1,0 +1,182 @@
+.pageHero {
+    background: linear-gradient(var(--gradient-end), var(--gradient-start));
+    height: fit-content;
+    color: var(--whiteText);
+
+    .heroWrapper {
+        display: flex;
+        position: relative;
+        padding-top: 180px;
+        gap: 100px;
+
+        .heroContent {
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-block: auto;
+            gap: 14px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+
+            .titleH1 {
+                font-size: 40px;
+                line-height: 1.2;
+                font-weight: 600;
+                letter-spacing: 1px;
+                background: linear-gradient(90deg, #FFFFFF, #6B97FF);
+                background-clip: text;
+                color: transparent;
+                opacity: 1;
+
+
+            }
+
+            .descriptionText {
+                font-size: 16px;
+                line-height: 1.6;
+                font-weight: 300;
+                color: #C0E6FF;
+                opacity: 1;
+
+                span {
+                    color: var(--whiteText);
+                }
+
+            }
+
+            .counters{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin-top: 50px;
+                
+                .achievement{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 16px 24px;
+
+                    .counter{
+                        font-size: 40px;
+                        font-weight: 400
+                    }
+                }
+                .divider{
+                    width: 1px;
+                    height: auto;
+                    padding-block: 30px;
+                    background-color: #FFFFFF55;
+                }
+            }
+        }
+
+        .featureImage {
+            width: 100%;
+            height: 40svh;
+            max-height: 450px;
+            display: flex;
+            justify-content: flex-end;
+
+            img {
+                width: 100%;
+                height: auto;
+                clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+            }
+        }
+    }
+}
+.contactDetails{
+    background: url(assets/imgs/Contactbg.png);
+    padding-block: 100px;
+
+    .contactWrapper{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
+        gap: 50px;
+
+        .contactTitle{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .blueText{
+                font-size: 20px;
+                font-weight: 400;
+                color: #21459C;
+            }
+            .title{
+                font-size: 40px;
+                font-weight: 600;
+            }
+        }
+        .contactAddress{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+
+            .addressList{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .addressCountry{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .countryName{
+                        font-weight: 800;
+                        color: #4D4D4D;
+                        font-size: 18px;
+                    }
+                }
+
+                .divider{
+                    width: 100%;
+                    height: 3px;
+                    background: #21459C;
+                }
+
+                &:nth-child(2n) .divider{
+                    background: #00ACFB;
+                }
+            }
+            .ContactList{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                .gradientBorder{
+                    padding: 1px;
+                    background: linear-gradient(var(--gradient-start),var(--gradient-end));
+                    border-radius: 9in;
+                    width: 62px;
+                    height: 62px;
+
+                    .ContactIcon{
+                        background: #FFF;
+                        border-radius: 9in;
+                        padding: 10px;
+                        width: 60px;
+                        height: 60px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                .address a{
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: #000;
+                    transition: all 0.3s;
+                }
+                &:hover .address a{
+                    color: #21459C;
+                }
+            }
+        }
+    }
+}
