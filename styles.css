@@ -991,6 +991,7 @@ a {
     background-attachment: fixed;
     background-size: contain;
     overflow-x: hidden;
+    min-height: 100vh;
 
     .processWrapper {
         width: 100%;
@@ -1019,6 +1020,8 @@ a {
                 display: flex;
                 gap: 104px;
                 height: 345px;
+                flex-wrap: nowrap;
+                width: max-content;
 
                 .stepsLine {
                     position: absolute;
@@ -1752,12 +1755,30 @@ a {
         overflow: hidden;
     }
 
-    .processSection {
+    /* .processSection {
         display: none;
-    }
+    } */
 
-    .OurProcess {
+    /* .OurProcess {
         display: block;
+    } */
+    .stepCards {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .stepCard {
+        width: 100% !important;
+        min-width: 80vw; /* tablet: wider cards for nicer swipe */
+        margin-bottom: 2rem;
+    }
+    
+    .stepsLine {
+        display: none; /* Hide horizontal line on mobile */
+    }
+    
+    .processSection {
+        min-height: auto !important; /* Remove forced height */
     }
 
     .footer {
@@ -2132,6 +2153,22 @@ a {
                 }
             }
         }
+    }
+
+    .stepCard {
+        min-width: 90vw; /* mobile: almost full width */
+    }
+    
+    .cardDetails {
+        padding: 1rem;
+    }
+    
+    .cardTitle {
+        font-size: 1.2rem;
+    }
+    
+    .cardText {
+        font-size: 0.95rem;
     }
 
     .Testimonials {

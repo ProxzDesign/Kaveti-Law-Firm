@@ -90,11 +90,11 @@ revealSection(
 );
 
 // Process Steps Section
-revealSection(
-  ".processSection",
-  ".sectionTitle",
-  ".stepCard" // All step cards inside process section
-);
+//revealSection(
+//  ".processSection",
+//  ".sectionTitle",
+//  ".stepCard" // All step cards inside process section
+//);
 
 // Services Cards Section
 revealSection(
@@ -324,73 +324,157 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+///////////////////////////////
+// Process card slider
+////////////////////////////////
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const wrapper = document.querySelector('.processSection');
+//   const stepsRow = document.querySelector('.stepCards');
+//   const cards = gsap.utils.toArray('.stepCard');
+//   const extraScroll = window.innerHeight; // 1 extra screen's worth
+  
+//   function getScrollDistance() {
+//     const containerWidth = document.querySelector('.steps').offsetWidth;
+//     const lastCard = cards[cards.length - 1];
+    
+//     const centerOfContainer = containerWidth / 2;
+//     const lastCardCenter = lastCard.offsetLeft + lastCard.offsetWidth / 2;
+//     console.log("total cards are =" + cards.length);
+//     return lastCardCenter - centerOfContainer;
+//   }
+
+//   // Pin & animate cards scroll horizontally
+//   gsap.to(stepsRow, {
+//     x: () => -getScrollDistance(),
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: wrapper,
+//       pin: true,
+//       scrub: 1,
+//       start: "top top",
+//       end: "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+//       anticipatePin: 1,
+//       invalidateOnRefresh: true,
+//       markers: false,
+//       id: 'hScroll',
+//     }
+//   });
+
+//   const stepsLine = document.querySelector('.stepsLine');
+    
+//   gsap.fromTo(
+//     stepsLine,
+//     { width: 0 },
+//     {
+//       width: 'calc(100% - 784px)',
+//       ease: 'none',
+//       scrollTrigger: {
+//         trigger: wrapper,
+//         scrub: 1,
+//         start: 'top top',
+//         end: "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+//         invalidateOnRefresh: true,
+//         markers: false,
+//       }
+//     }
+//   )
+
+
+//   cards.forEach((card, i) => {
+//     ScrollTrigger.create({
+//       trigger: card,
+//       containerAnimation: ScrollTrigger.getById('hScroll'),
+//       start: "center center",
+//       onEnter: () => card.classList.add('active'),
+//       onLeaveBack: () => card.classList.remove('active'),
+//     });
+//   });
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const wrapper = document.querySelector('.processSection');
-  const stepsRow = document.querySelector('.stepCards');
-  const stepImage = document.querySelector('.sixthStep');
-  const cards = gsap.utils.toArray('.stepCard');
-  const baseScroll = stepsRow.scrollWidth - window.innerWidth;
-  const extraScroll = window.innerHeight; // 1 extra screen's worth
-  
+  const wrapper   = document.querySelector('.processSection');
+  const stepsRow  = document.querySelector('.stepCards');
+  const cards     = gsap.utils.toArray('.stepCard');
+  const stepsLine = document.querySelector('.stepsLine');
+
+  const extraScroll = window.innerHeight; // extra space at end
+
   function getScrollDistance() {
-    const containerWidth = document.querySelector('.steps').offsetWidth;
-    const lastCard = cards[cards.length-1];
+    const containerWidth   = document.querySelector('.steps').offsetWidth;
+    const lastCard         = cards[cards.length - 1];
     const centerOfContainer = containerWidth / 2;
-    const lastCardCenter = lastCard.offsetLeft + lastCard.offsetWidth / 2;
+    const lastCardCenter    = lastCard.offsetLeft + lastCard.offsetWidth / 2;
     return lastCardCenter - centerOfContainer;
   }
 
-  // Pin & animate cards scroll horizontally
-  gsap.to(stepsRow, {
-    x: () => getScrollDistance(),
-    ease: "none",
-    scrollTrigger: {
-      trigger: wrapper,
-      pin: true,
-      scrub: 1,
-      start: "top top",
-      end: "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      markers: false,
-      id: 'hScroll',
-    }
-  });
+  let mm = gsap.matchMedia();
 
-  const stepsLine = document.querySelector('.stepsLine');
-    
-  gsap.fromTo(
-    stepsLine,
-    { width: 0 },
-    {
-      width: 'calc(100% - 810px)',
-      ease: 'none',
+  // All devices: keep horizontal scroll, but let values recalc per breakpoint
+  mm.add("(min-width: 0px)", () => {
+    // Clear previous inline styles if matchMedia re-runs
+    gsap.set(stepsRow, { clearProps: "x" });
+    gsap.set(stepsLine, { clearProps: "width" });
+
+    // Horizontal scroll animation
+    const hScroll = gsap.to(stepsRow, {
+      x: () => -getScrollDistance(),
+      ease: "none",
       scrollTrigger: {
         trigger: wrapper,
+        pin: true,
         scrub: 1,
-        start: 'top top',
-        end: "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+        start: "top top",
+        end: () => "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+        anticipatePin: 1,
         invalidateOnRefresh: true,
         markers: false,
+        id: 'hScroll',
       }
-    }
-  )
+    });
 
+    // Progress line
+    gsap.fromTo(
+      stepsLine,
+      { width: 0 },
+      {
+        width: () => {
+          // You can tweak this per breakpoint if needed
+          if (window.innerWidth <= 500)   return 'calc(100% - 320px)';
+          if (window.innerWidth <= 1024)  return 'calc(100% - 520px)';
+          return 'calc(100% - 784px)'; // desktop default
+        },
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          scrub: 1,
+          start: 'top top',
+          end: () => "+=" + (stepsRow.scrollWidth - window.innerWidth + extraScroll),
+          invalidateOnRefresh: true,
+          markers: false,
+        }
+      }
+    );
 
-  cards.forEach((card, i) => {
-    ScrollTrigger.create({
-      trigger: card,
-      containerAnimation: ScrollTrigger.getById('hScroll'),
-      start: "center center",
-      onEnter: () => card.classList.add('active'),
-      onLeaveBack: () => card.classList.remove('active'),
+    // Active state per card (tied to containerAnimation)
+    cards.forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        containerAnimation: hScroll,
+        start: "center center",
+        onEnter:     () => card.classList.add('active'),
+        onLeaveBack: () => card.classList.remove('active'),
+      });
     });
   });
 });
 
+
+
+///////////////////////////////
 //Faq accordian
+////////////////////////////////
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const accordionItems = document.querySelectorAll('.accordion__item');
