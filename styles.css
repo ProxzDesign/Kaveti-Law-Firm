@@ -1763,7 +1763,7 @@ a {
         display: block;
     } */
     .stepCards {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
     }
     
