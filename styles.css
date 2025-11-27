@@ -2098,17 +2098,44 @@ a {
 @media (max-width: 500px) {
     .hero {
         & .heroWrapper {
+            height: 80vh;
+
+            & .heroBackground{
+                top: 85%;
+            }
             & .heroContent {
                 .titleH1 {
-                    font-size: 36px;
+                    font-size: 30px;
                 }
+                .descriptionText{
+                    font-size: 14px;
+                }
+                .satisfiedCustomer {
+                    margin-block: 0px;
+                    padding: 10px;
+
+                    .counter{
+                        font-size: 14px;
+                    }
+                }
+            }
+            .heroimg img{
+                max-height: 500px;
             }
         }
     }
 
     .recordCounters {
+        padding-block: 25px;
         & .recordWrapper {
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            .sectionTitle{
+                grid-area: 1 / 1 / 2 / 3;
+                text-align: center;
+            }
         }
     }
 
