@@ -58,6 +58,7 @@
                 width: 100%;
                 height: auto;
                 clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+                object-fit: cover;
             }
         }
     }
@@ -144,6 +145,44 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .heroWrapper{
+        padding-top:120px !important;
+        gap:50px !important;
+        flex-direction: column-reverse;
+        padding-bottom: 50px;
+
+        .heroContent{
+            .counters{
+                flex-direction: column;
+                margin-top: 30px !important;
+                padding-bottom: 50px;
+                
+                .achievement{
+                    width: 100%;
+                    justify-content: center;
+                    padding-left: 0px !important;
+                }
+                .divider{
+                    display: none;
+                }
+                
+            }
+        }
+        .featureImage{
+            img{
+                clip-path: none !important;
+            }
+        }
+    }
+    .teamSection {
+        .teamWrapper {
+            display: flex;
+            flex-direction: column;
         }
     }
 }

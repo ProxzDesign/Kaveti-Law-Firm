@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     const navItems = document.querySelectorAll('.navigation .nav-item');
     const mobileNavItems = document.querySelectorAll('.mobile-nav__links .nav-item');
+    const submenuItems = document.querySelectorAll('.submenu a');
     
     // Desktop nav
     navItems.forEach(function(navItem, index) {
@@ -144,6 +145,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    //submenu nav
+    submenuItems.forEach(function(submenuItem, index){
+      if(submenuItem.getAttribute('href') === currentPath) {
+        submenuItem.classList.add('active');
+      }
+    });
+    
+
     // Mobile nav
     mobileNavItems.forEach(function(navItem, index) {
         const parentLink = navItem.querySelector('.dropdown-menu a');

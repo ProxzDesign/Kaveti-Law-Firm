@@ -136,6 +136,11 @@ a {
                     opacity: 1;
                     background-color: var(--fontColor);
                 }
+
+                &.active{
+                    opacity:1;
+                    background-color: var(--fontColor);
+                }
             }
         }
 
