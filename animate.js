@@ -494,6 +494,40 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 });
 
+// active navbar js
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Current path:', window.location.pathname); // Debug line
+    
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.navigation .nav-item');
+    const mobileNavItems = document.querySelectorAll('.mobile-nav__links .nav-item');
+    
+    // Desktop nav
+    navItems.forEach(function(navItem, index) {
+        const parentLink = navItem.querySelector('.dropdown-menu a');
+        if (parentLink) {
+            console.log(`Desktop nav ${index}:`, parentLink.getAttribute('href')); // Debug
+            if (parentLink.getAttribute('href') === currentPath) {
+                navItem.classList.add('active');
+                console.log('Added active to desktop nav-item', index);
+            }
+        }
+    });
+    
+    // Mobile nav
+    mobileNavItems.forEach(function(navItem, index) {
+        const parentLink = navItem.querySelector('.dropdown-menu a');
+        if (parentLink) {
+            console.log(`Mobile nav ${index}:`, parentLink.getAttribute('href')); // Debug
+            if (parentLink.getAttribute('href') === currentPath) {
+                navItem.classList.add('active');
+                console.log('Added active to mobile nav-item', index);
+            }
+        }
+    });
+});
+
 
 
 

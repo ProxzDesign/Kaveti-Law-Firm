@@ -183,6 +183,7 @@ a {
         justify-content: space-between;
         align-items: center;
         padding: 20px 0;
+        gap: 50px;
 
         .branding {
             img {
@@ -194,12 +195,16 @@ a {
 
         .navigation {
             display: flex;
-            gap: 16px;
+            /* gap: 16px; */
+            width: 100%;
+            justify-content: end;
+            background: #0A2C7F;
 
             .nav-item {
                 position: relative;
                 display: flex;
                 align-items: center;
+                padding: 14px;
 
                 .dropdownLink{
                     display: flex;
@@ -238,6 +243,10 @@ a {
                 }
                 &.open .dropdown-menu {
                     display: block;
+                }
+
+                &.active{
+                    background-color:#062162 ;
                 }
 
             }
