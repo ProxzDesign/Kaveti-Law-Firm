@@ -2101,7 +2101,7 @@ a {
             height: 80vh;
 
             & .heroBackground{
-                top: 85%;
+                top: 85%    ;
             }
             & .heroContent {
                 .titleH1 {

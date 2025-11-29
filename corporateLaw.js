@@ -165,3 +165,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+///////////////////////////////
+// Counter Animation Script
+///////////////////////////////
+function animateSimpleCounter(el, duration = 6000) {
+  const countSpan = el.querySelector('.count');
+  const target = parseInt(countSpan.textContent, 10);
+  let current = 0;
+  let stepCount = Math.floor(duration / 5);
+  let increment = target / stepCount;
+
+  function step() {
+    current += increment;
+    if (current < target) {
+      countSpan.textContent = Math.floor(current);
+      requestAnimationFrame(step);
+    } else {
+      countSpan.textContent = target;
+    }
+  }
+  countSpan.textContent = '0';
+  step();
+}
+
+// Intersection Observer logic
+const counters = document.querySelectorAll('.counter');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateSimpleCounter(entry.target, 1500);
+      obs.unobserve(entry.target); // animate only once per counter
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
