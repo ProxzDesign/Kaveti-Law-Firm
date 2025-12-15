@@ -116,13 +116,18 @@
 
             &.active {
                 display: block;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
             }
             .serviceContent{
                 width: 70%;
                 margin-left: auto;
+                padding-top: 50px;
                 .service-info p {
                     margin-bottom: 18px;
                     font-size: 1rem;
+                    line-height: 1.6;
                     color: var(--fontColor);
                 }
                 .sector-expertise {
@@ -133,6 +138,7 @@
                     }
                     p {
                         margin-bottom: 28px;
+                        line-height: 1.6;
                         color: var(--fontColor);
                     }
                 }
@@ -140,7 +146,7 @@
             
             .services-cards {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 gap: 28px;
 
                 .card {
@@ -158,11 +164,6 @@
                         margin-bottom: 12px;
                         gap: 20px;
 
-                        img{
-                            padding: 10px;
-                            border: 1px solid #C7C7C7;
-                            border-radius: 10px;
-                        }
                         
                         h5 {
                             margin: 0 0 8px 0;
@@ -175,6 +176,7 @@
                     p {
                         color: #5e6781;
                         font-size: 1rem;
+                        line-height: 1.6;
                         margin: 0;
                     }
                 }
